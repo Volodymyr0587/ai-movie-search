@@ -17,7 +17,7 @@ Node.js & npm
 
 🧬 Clone the repository
 
-`git clone https://github.com/Volodymyr0587/laravel-cinememo`
+`git clone https://github.com/Volodymyr0587/ai-movie-search`
 
 `cd ai-movie-search`
 
@@ -55,6 +55,7 @@ You can start the application in two ways:
     ```
 
 - Option 2 — Use a single Composer command:
-  `     composer run dev
-    `
-  This command will automatically start the Vite dev server and prepare the app for local development on localhost.
+    ```
+    composer run dev
+    ```
+    This command will automatically start the Vite dev server and prepare the app for local development on localhost.
