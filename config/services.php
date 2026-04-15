@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    'gemini' => [
+        'key' => env('GEMINI_API_KEY'),
+    ],
+
+    'omdb' => [
+        'key' => env('OMDB_API_KEY'),
+    ],
 ];
