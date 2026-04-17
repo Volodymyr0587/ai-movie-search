@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\Http;
+use App\Exceptions\AiException;
 
 class AiService
 {
@@ -32,8 +33,17 @@ class AiService
                 ]
             );
 
-        if (!$response->ok()) {
-            return [];
+        // if (!$response->ok()) {
+        //     return [];
+        // }
+
+        if ($response->failed()) {
+
+            if ($response->status() === 429) {
+                throw new AiException('AI limit exceeded. Try again later 🙃');
+            }
+
+            throw new AiException('AI service is unavailable right now.');
         }
 
         $text = data_get($response->json(), 'candidates.0.content.parts.0.text');

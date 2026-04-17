@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-black text-white">
 
     <head>
         <meta charset="UTF-8">
@@ -9,9 +9,11 @@
         @livewireStyles
     </head>
 
-    <body class="bg-gray-100">
+    <body class="bg-black text-white min-h-screen antialiased">
 
-        {{ $slot }}
+        <div class="min-h-screen flex flex-col">
+            {{ $slot }}
+        </div>
 
         @livewireScripts
     </body>

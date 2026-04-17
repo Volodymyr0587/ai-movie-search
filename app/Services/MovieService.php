@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\AiException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 
@@ -17,10 +18,13 @@ class MovieService
                     't' => $title
                 ]);
 
-            if (!$response->ok()) {
-                return [];
-            }
+            // if (!$response->ok()) {
+            //     return [];
+            // }
 
+            if ($response->failed()) {
+                throw new AiException('Movie service is unavailable.');
+            }
             $data = $response->json();
 
             // якщо фільм не знайдено
@@ -28,7 +32,8 @@ class MovieService
                 return [];
             }
 
-            return $data ?? [];
+            // return $data ?? [];
+            return $data;
         });
     }
 }
