@@ -59,8 +59,6 @@
         @endif
     </div>
 
-
-
     {{-- RESULTS --}}
     <div wire:loading.remove class="px-6 pb-10">
 
@@ -70,34 +68,24 @@
             </h2>
 
             <div class="grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-
                 @foreach($movies as $movie)
-                    <div class="group relative cursor-pointer">
-
+                    <a href="https://www.imdb.com/title/{{ $movie['imdbID'] ?? '' }}/" target="_blank"
+                        class="group relative cursor-pointer block">
                         {{-- POSTER --}}
                         <img src="{{ $movie['Poster'] ?? '' }}"
                             class="rounded-lg w-full h-[300px] object-cover transition duration-300 group-hover:scale-105" />
-
                         {{-- OVERLAY --}}
                         <div
                             class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition p-3 flex flex-col justify-end rounded-lg">
-
                             <h3 class="text-sm font-bold mb-1">
-                                <a href="https://www.imdb.com/title/{{ $movie['imdbID'] ?? '' }}/" target="_blank"
-                                    class="hover:underline">
-                                    {{ $movie['Title'] }}
-                                </a>
+                                {{ $movie['Title'] }}
                             </h3>
-
                             <p class="text-xs text-gray-300 line-clamp-3">
                                 {{ $movie['Plot'] ?? '' }}
                             </p>
-
                         </div>
-
-                    </div>
+                    </a>
                 @endforeach
-
             </div>
         @endif
 
